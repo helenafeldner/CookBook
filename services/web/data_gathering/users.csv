@@ -1,10 +1,4 @@
 id,name,mail,password
 1,John Doe,johndoe@example.com,pass123
 2,Jane Smith,janesmith@example.com,hello456
-3,Michael Johnson,michaeljohnson@example.com,abc123
-4,Sarah Davis,sarahdavis@example.com,password789
-5,Robert Brown,robertbrown@example.com,securepass
-6,Emily Wilson,emilywilson@example.com,letmein
-7,David Taylor,davidtaylor@example.com,p@ssw0rd
-8,Lisa Anderson,lisaanderson@example.com,welcome123
-9,Matthew Thomas,matthewthomas@example.com,secretword
+
