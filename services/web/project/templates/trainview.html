@@ -86,7 +86,7 @@
 <body>
     
     <div class="train-card">
-        <h1>Train Information</h1>
+        <h1>Recipe</h1>
         <div class="trainview-info">
         <img src="{{ url_for('static', filename=picture) }}" alt="Train Image" class="trainview_image" onerror="replaceImage(this)">
 
@@ -98,34 +98,6 @@
             <tr>
                 <td><strong>Operators:</strong></td>
                 <td>{{ operator }}</td>
-            </tr>
-            <tr>
-                <td><strong>Family:</strong></td>
-                <td>{{ family }}</td>
-            </tr>
-            <tr>
-                <td><strong>Manufacturer:</strong></td>
-                <td>{{ manufacturer }}</td>
-            </tr>
-            <tr>
-                <td><strong>Power Supply:</strong></td>
-                <td>{{ power_supply }}</td>
-            </tr>
-            <tr>
-                <td><strong>Maximum Speed (Operated):</strong></td>
-                <td>{{ max_speed_op }}</td>
-            </tr>
-            <tr>
-                <td><strong>Maximum Speed (Designed):</strong></td>
-                <td>{{ max_speed_d  }}</td>
-            </tr>
-            <tr>
-                <td><strong>Maximum Speed (Recorded):</strong></td>
-                <td>{{ max_speed_rec  }}</td>
-            </tr>
-            <tr>
-                <td><strong>In Service:</strong></td>
-                <td>{{ in_service  }}</td>
             </tr>
         </table>
         </div>
@@ -144,7 +116,7 @@
         
     </div>
     <div class="user-reviews">
-        <h2>User Reviews</h2>
+        <h2>Rating</h2>
 
         <div class="user-rating">
            <span>{{ avg_rating }}</span> / 5
@@ -155,7 +127,7 @@
                 <input type="hidden" name="form_name" value="review">
                 <textarea name="freviewtext" placeholder="Write a review..."></textarea>
                 
-                <label for="fscore">Score:</label>
+                <label for="fscore">Stars:</label>
                 <div class="score-radios">
                     <input type="radio" id="score1" name="fscore" value="1">
                     <label for="score1">1</label>
