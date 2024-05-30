@@ -1,0 +1,4 @@
+Flask
+flask-login
+psycopg2-binary
+flask-bcrypt

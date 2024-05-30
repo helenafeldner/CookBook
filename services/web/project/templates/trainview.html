@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .train-card {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .train-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .train-card table {
+            width: 100%;
+        }
+
+        .train-card table tr td {
+            padding: 5px;
+        }
+
+        .train-card table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-reviews {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.user-reviews h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.user-rating {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.user-rating span {
+    color: #ff8800;
+}
+
+.user-review-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.user-review {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-review h3 {
+    margin-bottom: 5px;
+}
+
+.user-review p {
+    margin-bottom: 5px;
+}
+
+.user-review p strong {
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="train-card">
+        <h1>Train Information</h1>
+        <div class="trainview-info">
+        <img src="{{ url_for('static', filename=picture) }}" alt="Train Image" class="trainview_image" onerror="replaceImage(this)">
+
+        <table>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td>{{ name }}</td>
+            </tr>
+            <tr>
+                <td><strong>Operators:</strong></td>
+                <td>{{ operator }}</td>
+            </tr>
+            <tr>
+                <td><strong>Family:</strong></td>
+                <td>{{ family }}</td>
+            </tr>
+            <tr>
+                <td><strong>Manufacturer:</strong></td>
+                <td>{{ manufacturer }}</td>
+            </tr>
+            <tr>
+                <td><strong>Power Supply:</strong></td>
+                <td>{{ power_supply }}</td>
+            </tr>
+            <tr>
+                <td><strong>Maximum Speed (Operated):</strong></td>
+                <td>{{ max_speed_op }}</td>
+            </tr>
+            <tr>
+                <td><strong>Maximum Speed (Designed):</strong></td>
+                <td>{{ max_speed_d  }}</td>
+            </tr>
+            <tr>
+                <td><strong>Maximum Speed (Recorded):</strong></td>
+                <td>{{ max_speed_rec  }}</td>
+            </tr>
+            <tr>
+                <td><strong>In Service:</strong></td>
+                <td>{{ in_service  }}</td>
+            </tr>
+        </table>
+        </div>
+        <form method="post">
+            <div class="add-button">
+                <input type="hidden" name="train_id" value="{{ train_id }}">
+                {% if in_user_list %}
+                    <input type="hidden" name="form_name" value="remove-from-list">
+                    <button type="submit" class="remove-train-button">Remove Train from My List</button>
+                {% else %}
+                    <input type="hidden" name="form_name" value="add-to-list">
+                    <button type="submit" class="add-train-button">Add Train to My List</button>
+                {% endif %}
+            </div>
+        </form>
+        
+    </div>
+    <div class="user-reviews">
+        <h2>User Reviews</h2>
+
+        <div class="user-rating">
+           <span>{{ avg_rating }}</span> / 5
+        </div>
+
+        <div class="user-review-form">
+            <form method="post">
+                <input type="hidden" name="form_name" value="review">
+                <textarea name="freviewtext" placeholder="Write a review..."></textarea>
+                
+                <label for="fscore">Score:</label>
+                <div class="score-radios">
+                    <input type="radio" id="score1" name="fscore" value="1">
+                    <label for="score1">1</label>
+                    <input type="radio" id="score2" name="fscore" value="2">
+                    <label for="score2">2</label>
+                    <input type="radio" id="score3" name="fscore" value="3">
+                    <label for="score3">3</label>
+                    <input type="radio" id="score4" name="fscore" value="4">
+                    <label for="score4">4</label>
+                    <input type="radio" id="score5" name="fscore" value="5">
+                    <label for="score5">5</label>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Display user reviews -->
+        <div class="user-reviews">
+            {% for index in range(usernames|length) %}
+                <div class="user-review">
+                    <a href="{{ url_for('mylist', name=usernames[index]) }}">
+                    <h3>{{ usernames[index] }}</h3>
+                    </a>
+                    <p>{{ comments[index] }}</p>
+                    <p><strong>Rating: {{ ratings[index] }}</strong></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        function replaceImage(img) {
+    img.src = '/static/placeholder.jpg';  // Set the path to your placeholder image
+    }
+    </script>
+    {% endblock %}

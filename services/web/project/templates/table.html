@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Trains</h1>
+
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" onchange="sortTable()">
+            <option value="default">Default</option>
+            <option value="train_name">Train Name</option>
+            <option value="max_op_speed">Max Operational Speed</option>
+            <!-- <option value="max_speed_designed">Max Designed Speed</option> -->
+            <option value="max_speed_record">Max Record Speed</option>
+            <!-- <option value="yeawr_in_service">Year In Service</option> -->
+            <!-- Add more options for each column you want to sort by -->
+        </select>
+
+        <table>
+            <thead>
+                <tr>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <tr>
+                        {% for column in row %}
+                            {% if loop.index0 == column_with_image_index %} {# Specify the column index where the image URLs are stored, starting from 0 #}
+                                <td><img src="static/images_thumb/{{ column }}" alt="Image" width="200" onerror="replaceImage(this)"></td>
+                            {% elif loop.index0 == column_with_train_name_index %} {# Specify the column index where the train names are stored, starting from 0 #}
+                                <td><a href="{{ url_for('train_view', name=column) }}">{{ column }}</a></td>
+                            {% else %}
+                                <td>{{ column }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function getURLParameter(name) {
+            var searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(name);
+        }
+
+        function setSelectedOption() {
+            var select = document.getElementById("sort-select");
+            var currentSortValue = getURLParameter("sort") || "default";
+
+            for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === currentSortValue) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        setSelectedOption();
+
+        function sortTable() {
+            var select = document.getElementById("sort-select");
+            var selectedValue = select.options[select.selectedIndex].value;
+
+            // Redirect to the URL with the selected sorting option
+            window.location.href = "/table?sort=" + selectedValue;
+        }
+
+        function replaceImage(img) {
+    img.src = '/static/placeholder.jpg';  // Set the path to your placeholder image
+    }
+    </script>
+{% endblock %}

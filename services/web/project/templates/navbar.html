@@ -1,0 +1,24 @@
+<div class="navbar">
+    
+    <a href="/">Home</a>
+    <!-- <a href="/search">Search</a> -->
+    <a href="/table">Table</a>
+    <a href="/users">Users</a>
+
+    <div class="navbar-search">
+        <form class="search-form" method="POST" action="{{ url_for('index') }}">
+            <input class="search-input" type="text" name="search" placeholder="Search for trains">
+
+        </form>
+        {% if current_user.is_authenticated %}
+            <a href="/list/{{ current_user.name }}" class="profile-link">My List</a>
+            <a href="/logout" class="logout-link">Logout</a>
+        {% else %}
+            <a href="/signup" class="signup-link">Sign Up</a>
+            <a href="/login" class="login-link">Login</a>
+        {% endif %}
+    </div>
+    
+    <div class="signlinks">
+        </div>
+</div>

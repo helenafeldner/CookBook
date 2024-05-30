@@ -1,0 +1,725 @@
+
+    /* Reset default styles for certain elements */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Set a background color and font family */
+    body {
+        background-color: #e4e4e4;
+        font-family: Arial, sans-serif;
+    }
+    
+    .content-container {
+        background-color: #fffde400;
+        padding-top: 20px;
+        padding-bottom: 10%;
+        margin-bottom: 20px;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .topt-container {
+        background-color: #dde6ed00;
+        max-width: 1600px;
+        overflow: visible;
+        height: 200px;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .grid-container {
+      display: flex;
+    }
+
+
+    
+    /* Style the table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 15px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        table-layout: fixed;
+    }
+    
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        white-space: pre-wrap;
+        overflow: hidden;
+    }
+    
+    
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    
+    td img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    td a {
+        color: #2196f3;
+        text-decoration: none;
+    }
+    
+    td a:hover {
+        text-decoration: underline;
+    }
+    
+
+
+        /* CSS for the navigation bar */
+    .navbar {
+    background-color: #27374D;
+    overflow: hidden;
+    width: 100%;
+    height: 70px;
+    }
+
+    .navbar a {
+    float: left;
+    height: 70px;
+    color: rgb(237, 237, 237);
+    text-align: center;
+    /* make the text cetnered in vertically*/
+    line-height: 35px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold; 
+    
+    }
+
+    .navbar a:hover {
+    background-color: #111;
+    }
+    .navbar-right {
+    display: flex;
+    align-items: center;
+    float: right;
+    }
+
+    .navbar-right a {
+        margin-left: 10px;
+        
+    }
+    /* Style the header */
+    h1 {
+        text-align: left;
+        margin-top: 15px;
+        margin-bottom: 0px;
+        /*change the size*/
+        font-size: 25px;
+        color: rgb(87, 87, 87);
+        font-family: monospace;
+        font-weight: bold; 
+        font-size: 20px;
+    }
+
+    .train-card h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-top: 0cm;
+        padding-top: 0cm;
+    }
+
+    .train-card {
+      margin-top: 20px;
+    }
+
+
+    /* Style the search form */
+    .search-form {
+        display: flex;
+        /* center the search form */
+        justify-content: center;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    .search-input {
+        padding: 10px;
+        font-size: 16px;
+        max-width: 100%;
+        flex: 1;
+        border: 1px solid #a1a1a1a5;
+        border-right: none;
+        border-radius: 10px;
+        font-family: monospace;
+        font-weight: bold; 
+    }
+
+    .search-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #005499;
+        color: #fff;
+        border: none;
+        border-radius: 0 3px 3px 0;
+        cursor: pointer;
+        font-family: monospace;
+        font-weight: bold; 
+ 
+    }
+
+    .search-button:hover {
+        background-color: #0c7cd5;
+    }
+    /* Styles for the dropdown menu */
+    .dropdown-container {
+        display: inline-block;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    label {
+        margin-right: 5px;
+    }
+
+    select {
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        background-color: #fff;
+    }
+
+    .navbar img {
+        height: 100%;
+        margin: auto;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    .logo-container img {
+        height: 50px;
+    }
+
+    .signlinks {
+        display: flex;
+        justify-items: right;
+    }
+    
+    .signlinks a {
+        display: inline-block;
+        background-color: #23224248;
+        color: #fff;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        line-height: 35px;
+    }
+
+    
+    .signlinks a:hover {
+        background-color: #0c7cd5;
+    }
+
+
+
+    .add-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .add-train-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .remove-train-button {
+        background-color: #ff9f9f;
+        color: rgb(31, 31, 31);
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .add-button button:hover {
+        background-color: #45a049;
+    }
+
+    .navbar-search {
+        display: flex;
+        max-width: 100%;
+        align-items: center;
+    }
+
+
+    .grid {
+      margin-top: 0;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      padding: 25px 10px;
+      list-style: none;
+      overflow-x: scroll;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      /* remove scrollbar */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      z-index: 1;
+      /* hide horizontal overflow and show vertical overflow only */
+    }
+
+    .grid::-webkit-scrollbar {
+      display: none;
+    }
+  
+  .grid-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 7.5cm;
+    background: none;
+    border-radius: 12px;
+    margin-right: 7px;
+    margin-left: 7px;
+    scroll-snap-align: start;
+    transition: all 0.2s;
+    overflow: visible;
+  }
+  .grid-item.left .card {
+    left: -103%;
+}
+  
+  .grid-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    height: 150px; /* Set the desired height for the image */
+    object-fit: cover; /* Crop the image to fit the specified height */
+    z-index: 2; /* Set a high z-index value to the grid container */
+    /* make shadows appear behind the image */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+
+
+  .scroll-button {
+    position: relative;
+    width: 40px;
+    height: 200px;
+    /*makea  gradient background*/
+    border-radius: 5%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 2;
+    
+  }
+  .left-button {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    left: 10px;
+    transform: translateX(25px);
+    transition: all 0.2s;
+  }
+  
+  .right-button {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 100%
+    );
+    right: 10px;
+    transform: translateX(-25px);
+    transition: all 0.2s;
+  }
+
+  .scroll-button:hover {
+    background: #ffffff;
+  }
+  
+  .card {
+    position: absolute;
+    top: 0;
+    left: 103%;
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    z-index: 10;
+
+    /* dont allow user interaction */
+    pointer-events: none;
+
+    /* dont allow the height to be bigger than the container */
+    max-height: 100%;
+
+    /* make things stack horizontally */
+    display: flex;
+}
+
+/* make the card of the last grid element show up on the left side */
+.card.leftmost {
+    left: -103%;
+}
+
+.card .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card h4 {
+    /* making monospace font which is blocky, bold and easy to read */
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px; 
+}
+
+.card h5 {
+    /* making monospace font which is blocky, bold and easy to read and make the color greyed out */
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #7d7d7d;
+    
+}
+
+.grid-item:hover .card {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+  
+      .list-item:hover .card {
+        left: 100%;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1); /* Scale back to original size on hover */
+        /*make it show above the container*/
+      }
+      
+      .card h3 {
+        margin-top: 0;
+      }
+      
+      .card p {
+        margin-bottom: 10px;
+      }
+
+      
+
+
+
+      .rating-container {
+        display: flex;
+        justify-content: flex-end; /* Align the content to the right */
+        align-items: center;
+        height: 55px;
+        margin-top: 10px;
+      }
+
+      .grid-item .card .rating-container {
+        margin-left: 10px;
+      }
+
+      
+      .rating-square {
+        position: relative;
+        width: 55px;
+        height: 55px;
+        border-radius: 10%;
+      }
+      
+      .rating-score {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+      
+      .list-item {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+        background-color: #fff;
+        border-radius: 10px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+      }
+
+
+      .list-item .card {
+        position: absolute;
+        padding: 0;
+        width: 250px;
+        left: -250px;
+        top: auto;
+        bottom: auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10; /* Set a high value for z-index */
+        transform: scale(0.9); /* Added scaling effect */
+        max-height: none;
+      }
+
+      .list-item:hover .card {
+        left: -250px;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1); /* Adjust scale and position */
+        overflow: hidden;
+      }
+    
+      .card-image {
+        width: 100%;
+        object-fit: cover;
+        object-position: bottom; /* Center the image within the container */
+        border-radius: 5px; /* Add border-radius to make the card corners rounded */
+      }
+      
+      
+    .list-image {
+        height: 55px;
+        width: 55px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 10%;
+        margin-top: 0px;
+      }
+
+      /* Align rating to the right */
+    .list-item .rating-container {
+        margin-left: auto;
+        margin-top: 0px;
+        
+    }
+    .list-item .information {
+        margin-left: 10px;
+        margin-top: 0px;
+        color: #343434de;
+        font-size: small;
+    }
+    .list-item a {
+        /* remove underline from hyperlink */
+        text-decoration: none;
+    }
+    .list-item .rating-square {
+        position: relative;
+        width: 55px;
+        height: 55px;
+        border-radius: 10%;
+        margin-top: 0px;
+      }
+      
+      .trainview_image {
+        width: 40%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+        object-fit: cover; /* Crop the image to fit the specified height */
+        z-index: 2; /* Set a high z-index value to the grid container */
+        /* make shadows appear behind the image */
+        box-shadow: 0 0 9px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+      }
+
+      .trainview-info {
+        display: flex;
+        align-items: flex-start; /* Align items at the top */
+      }
+      
+      .trainview-info table {
+        width: 40%;
+        margin-left: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+      }
+      
+      .trainview-info table td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+        border: none;
+      }
+      
+      .trainview-info table td:first-child {
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .trainview-info table tr:last-child td {
+        border-bottom: none;
+      }
+      
+      .trainview-info table tr:hover, .trainview-info table td:hover{
+        color: #c4c4c4;
+      }
+
+
+
+    .user-review-form {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .user-review-form textarea {
+      width: 100%;
+      height: 100px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .user-review-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .user-reviews a {
+      /* remove decorations */
+      text-decoration: none;
+    }
+    
+    .score-radios input[type="radio"] {
+      display: none;
+    }
+    
+    .score-radios label {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      background-color: #ffbb33;
+      color: #fff;
+    }
+    
+    .score-radios input[type="radio"]:checked + label {
+      background-color: #ff8800;
+      color: #fff;
+      box-shadow: 0 0 0 3px #ff8800;
+    }
+    
+    #score1 + label {
+      background-color: #ff3333;
+    }
+    
+    #score2 + label {
+      background-color: #ff6633;
+    }
+    
+    #score3 + label {
+      background-color: #ff9933;
+    }
+    
+    #score4 + label {
+      background-color: #ffcc33;
+    }
+    
+    #score5 + label {
+      background-color: #99cc00;
+    }
+    
+    .user-review-form button[type="submit"] {
+      background-color: #ff8800;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    .user-reviews {
+      margin-top: 20px;
+    }
+    
+    .user-review {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      /*add shadow*/
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    }
+    
+    .user-review h3 {
+      margin-bottom: 10px;
+    }
+    
+    .user-review p {
+      margin-bottom: 5px;
+    }
+    
+    .user-review p strong {
+      color: #ff8800;
+    }
+
+    .userlist td a:hover {
+        text-decoration: none; /* Remove underline on hover */
+    }
+    .usearch-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .usearch-container .search-input {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .logo-link {
+      text-decoration: none;
+    }
+
+    .logo-link:focus,
+    .logo-link:hover {
+        outline: none; /* Remove blue overlay */
+    }
+
+    .signupin h1{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      color: #ffffffde;
+    }
