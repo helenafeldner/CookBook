@@ -27,42 +27,72 @@ CREATE TABLE public.opskrift (
     comment character(50)
 );
 
+INSERT INTO public.opskrift(
+	oid, titel, comment)
+	VALUES (1, 'risengrød', 'Mad man spiser til jul.'), (2, 'rødgrød', 'Mad man spiser til sommer.'), (3, 'flæskesteg', 'Mad man spiser til jul.');
+
 
 --
--- Name: trains; Type: TABLE; Schema: public; Owner: -
+-- ingredienser(name: int)
 --
-
+ 
 CREATE TABLE public.ingredienser (
     name character(50) PRIMARY KEY 
 );
 
+INSERT INTO public.ingredienser (
+	name 
+) VALUES ('gulerod'), ('tomat'), ('svin'); 
+
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -
+-- ratingtype(stjerner: int, beskrivelse : string)
 --
 
+--DELETE FROM ratingtype; 
 CREATE TABLE public.ratingtype (
     stjerner integer PRIMARY KEY,
     beskrivelse character(50)
 );
 
+INSERT INTO public.ratingtype (
+	stjerner, beskrivelse 
+) VALUES (1, 'dårligt'), (2, 'spiseligt'), (3, 'ok'), (4, 'ikke ringe'), (5, 'lækkert'); 
 
 
+
+--
+-- Forbindelse mellem rating of opskrift. 
+--
+
+--DELETE FROM opskriftrating; 
 CREATE TABLE public.opskriftrating (
     oid integer REFERENCES opskrift, 
     stjerner integer REFERENCES ratingtype
 );
---
--- Data for Name: listed_trains; Type: TABLE DATA; Schema: public; Owner: -
---
 
+INSERT INTO public.opskriftrating (
+	oid, stjerner
+) VALUES (2, 5); 
+
+
+
+--
+-- Forbindelse mellem ingredienser og opskrift. 
+--
 
 CREATE TABLE public.opskriftingredienser (
-    oid integer REFERENCES opskrift, 
+    oid integer REFERENCES opskrift (oid), 
     name character(50) REFERENCES ingredienser,
     mængde integer,
     PRIMARY KEY (oid, name)
 );
+
+
+INSERT INTO public.opskriftingredienser (
+	oid, name, mængde
+) VALUES (2, 'tomat', '10');
+
 
 
 COPY public.listed_trains (uid, tid) FROM stdin;
@@ -85,6 +115,8 @@ COPY public.reviews (uid, tid, rating, comment) FROM stdin;
 
 --
 -- Data for Name: trains; Type: TABLE DATA; Schema: public; Owner: -
+----
+-- Data for Name: listed_trains; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.trains (id, name, operators, family, manufacturer, power_supply, max_speed_operational, max_speed_designed, max_speed_record, in_service, picture) FROM stdin;
