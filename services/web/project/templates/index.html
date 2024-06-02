@@ -9,7 +9,7 @@
 </script>
 
 <div class="topt-container">
-    <h1>TOP TRAINS</h1>
+    <h1>ALL RECIPES</h1>
     <div class="grid-container">
     <button class="scroll-button left-button">&lt;</button>
     <ul class="grid">
@@ -44,112 +44,7 @@
 </div>
 
 
-<div class="topt-container">
-<h1>TRAINS BY RECORD SPEED</h1>
-<div class="grid-container">
-<button class="scroll-button left-button">&lt;</button>
-<ul class="grid">
-        {% for row in rspeed_rows %}
-            <li class="grid-item">
-                <a href="{{ url_for('train_view', name=row[column_with_train_name_index]) }}">
-                    <img class="grid-image" src="static/lowres_images/{{ row[column_with_image_index] }}" alt="Image" onerror="replaceImage(this)">
-                </a>
-                <div class="card">
-                      <div class="card-body">
-                        {% for column in row %}
-                            {% if headers[loop.index0] == "name" %}
-                                    <h4>{{ column }}</h4>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "family" %}
-                                    <h5>{{ column }}</h5>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "operators" %}
-                                    <h5>{{ column }}</5>
-                            {% endif %}
-                        {% endfor %}
-                      </div>
-                    <div class="rating-container">
-                        <div class="rating-square", id="indicator_{{loop.index0}}">
-                          <span class="rating-score">{{row[rating]}}</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-    <button class="scroll-button right-button">&gt;</button>
-</div>
-</div>
-
-<div class="topt-container">
-    <h1>LATEST TRAINS</h1>
-    <div class="grid-container">
-    <button class="scroll-button left-button">&lt;</button>
-    <ul class="grid">
-        {% for row in latest_rows %}
-            <li class="grid-item">
-                <a href="{{ url_for('train_view', name=row[column_with_train_name_index]) }}">
-                    <img class="grid-image" src="static/lowres_images/{{ row[column_with_image_index] }}" alt="Image" onerror="replaceImage(this)">
-                </a>
-                <div class="card">
-                      <div class="card-body">
-                        {% for column in row %}
-                            {% if headers[loop.index0] == "name" %}
-                                    <h4>{{ column }}</h4>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "family" %}
-                                    <h5>{{ column }}</h5>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "operators" %}
-                                    <h5>{{ column }}</5>
-                            {% endif %}
-                        {% endfor %}
-                      </div>
-                    <div class="rating-container">
-                        <div class="rating-square", id="indicator_{{loop.index0}}">
-                          <span class="rating-score">{{row[rating]}}</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-    <button class="scroll-button right-button">&gt;</button>
-    </div>
-</div>
-
 {% if user_logged_in %}
-
-<div class="topt-container">
-    <h1>TRAIN ON YOUR LIST</h1>
-    <div class="grid-container">
-    <button class="scroll-button left-button">&lt;</button>
-    <ul class="grid">
-        {% for row in user_rows %}
-            <li class="grid-item">
-                <a href="{{ url_for('train_view', name=row[column_with_train_name_index]) }}">
-                    <img class="grid-image" src="static/lowres_images/{{ row[column_with_image_index] }}" alt="Image" onerror="replaceImage(this)">
-                </a>
-                <div class="card">
-                      <div class="card-body">
-                        {% for column in row %}
-                            {% if headers[loop.index0] == "name" %}
-                                    <h4>{{ column }}</h4>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "family" %}
-                                    <h5>{{ column }}</h5>  <!-- Create a new column for the value -->
-                            {% elif headers[loop.index0] == "operators" %}
-                                    <h5>{{ column }}</5>
-                            {% endif %}
-                        {% endfor %}
-                      </div>
-                    <div class="rating-container">
-                        <div class="rating-square", id="indicator_{{loop.index0}}">
-                          <span class="rating-score">{{row[rating]}}</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-    <button class="scroll-button right-button">&gt;</button>
-</div>
-</div>
 {% endif %}
 
 
