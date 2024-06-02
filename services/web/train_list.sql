@@ -5,54 +5,26 @@
 -- Dumped from database version 14.7 (Homebrew)
 -- Dumped by pg_dump version 14.7 (Homebrew)
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
 -- Drop constraints if they exist
-ALTER TABLE IF EXISTS public.reviews DROP CONSTRAINT IF EXISTS reviews_uid_fkey;
-ALTER TABLE IF EXISTS public.reviews DROP CONSTRAINT IF EXISTS reviews_tid_fkey;
-ALTER TABLE IF EXISTS public.users DROP CONSTRAINT IF EXISTS users_pkey;
-ALTER TABLE IF EXISTS public.trains DROP CONSTRAINT IF EXISTS trains_pkey;
-ALTER TABLE IF EXISTS public.reviews DROP CONSTRAINT IF EXISTS reviews_pkey;
-ALTER TABLE IF EXISTS public.listed_trains DROP CONSTRAINT IF EXISTS listed_trains_pkey;
 
 -- Drop tables if they exist
-DROP TABLE IF EXISTS public.users;
-DROP TABLE IF EXISTS public.trains;
-DROP TABLE IF EXISTS public.reviews;
-DROP TABLE IF EXISTS public.listed_trains;
+DROP TABLE IF EXISTS public.opskriftrating;
+DROP TABLE IF EXISTS public.opskriftingrediens;
+DROP TABLE IF EXISTS public.opskrift;
+DROP TABLE IF EXISTS public.ingredienser;
+DROP TABLE IF EXISTS public.ratingtype;
 
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- Name: listed_trains; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.listed_trains (
-    uid integer NOT NULL,
-    tid integer NOT NULL
-);
 
 
 --
 -- Name: reviews; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.reviews (
-    uid integer NOT NULL,
-    tid integer NOT NULL,
-    rating integer,
-    comment character(300)
+CREATE TABLE public.opskrift (
+    oid SERIAL PRIMARY KEY,
+    titel character(50),
+--    rating integer,
+    comment character(50)
 );
 
 
@@ -60,18 +32,8 @@ CREATE TABLE public.reviews (
 -- Name: trains; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.trains (
-    id integer NOT NULL,
-    name text,
-    operators text,
-    family text,
-    manufacturer text,
-    power_supply text,
-    max_speed_operational text,
-    max_speed_designed text,
-    max_speed_record text,
-    in_service text,
-    picture text
+CREATE TABLE public.ingredienser (
+    name character(50) PRIMARY KEY 
 );
 
 
@@ -79,17 +41,29 @@ CREATE TABLE public.trains (
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.users (
-    id integer NOT NULL,
-    name text,
-    mail text,
-    password text
+CREATE TABLE public.ratingtype (
+    stjerner integer PRIMARY KEY,
+    beskrivelse character(50)
 );
 
 
+
+CREATE TABLE public.opskriftrating (
+    oid integer REFERENCES opskrift, 
+    stjerner integer REFERENCES ratingtype
+);
 --
 -- Data for Name: listed_trains; Type: TABLE DATA; Schema: public; Owner: -
 --
+
+
+CREATE TABLE public.opskriftingredienser (
+    oid integer REFERENCES opskrift, 
+    name character(50) REFERENCES ingredienser,
+    mængde integer,
+    PRIMARY KEY (oid, name)
+);
+
 
 COPY public.listed_trains (uid, tid) FROM stdin;
 \.
