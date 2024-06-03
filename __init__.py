@@ -191,20 +191,63 @@ def add_recipe():
 
 
 
-# Update your Flask routes
 @app.route('/view_recipes')
 def view_recipes():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Fetch all recipes
-    cursor.execute("SELECT titel FROM opskrift")
+    # Fetch all recipes with their IDs, titles, and comments
+    cursor.execute("SELECT oid, titel, comment FROM opskrift")
     recipes = cursor.fetchall()
     
     cursor.close()
     conn.close()
 
     return render_template('view_recipes.html', recipes=recipes)
+
+
+
+@app.route('/recipe/<int:oid>', methods=["GET", "POST"])
+def recipe_view(oid):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Fetch the recipe
+    cursor.execute("SELECT titel, comment FROM opskrift WHERE oid = %s", (oid,))
+    recipe = cursor.fetchone()
+    if not recipe:
+        cursor.close()
+        conn.close()
+        return "Recipe not found", 404
+
+    if request.method == "POST":
+        if not current_user.is_authenticated:
+            return redirect('/login')
+
+        # Get the rating from the form
+        rating = int(request.form.get('rating'))
+
+        # Insert the rating
+        cursor.execute("INSERT INTO opskriftrating (oid, stjerner) VALUES (%s, %s)", (oid, rating))
+        conn.commit()
+
+    # Fetch ingredients
+    cursor.execute("""
+        SELECT i.name, oi.mængde
+        FROM ingredienser i
+        JOIN opskriftingrediens oi ON i.name = oi.name
+        WHERE oi.oid = %s
+    """, (oid,))
+    ingredients = cursor.fetchall()
+
+    # Fetch average rating
+    cursor.execute("SELECT COALESCE(AVG(stjerner), 0) AS rating FROM opskriftrating WHERE oid = %s", (oid,))
+    avg_rating = cursor.fetchone()[0]
+
+    cursor.close()
+    conn.close()
+
+    return render_template('recipe_view.html', recipe=recipe, ingredients=ingredients, avg_rating=avg_rating, oid=oid)
 
 
 

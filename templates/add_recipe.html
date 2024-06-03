@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
+    <div class="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
     <div class="container">
         <h1>Tilføj opskrift</h1>
         <form action="{{ url_for('add_recipe') }}" method="post">

@@ -1,17 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All recipes</title>
+    <title>View Recipes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    {% for recipe in recipes %}
-            <li>{{ recipe[0] }}</li>
-    {% endfor %}
+    <div class="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <h1>Recipes</h1>
+        <div class="list-group">
+            {% for recipe in recipes %}
+                <a href="{{ url_for('recipe_view', oid=recipe[0]) }}" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ recipe[1] }}</h5>
+                    <p class="small text-muted">{{ recipe[2] }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
 

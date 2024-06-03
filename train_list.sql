@@ -34,6 +34,9 @@ CREATE TABLE public.ingredienser (
 
 INSERT INTO public.ingredienser (name) VALUES ('gulerod'), ('tomat'), ('svin');
 
+-- Drop the old primary key constraint on the opskriftrating table
+ALTER TABLE public.opskriftrating DROP CONSTRAINT IF EXISTS opskriftrating_pkey;
+
 -- Create Rating Type Table
 CREATE TABLE public.ratingtype (
     stjerner INTEGER PRIMARY KEY,
@@ -47,11 +50,12 @@ INSERT INTO public.ratingtype (stjerner, beskrivelse) VALUES
     (4, 'ikke ringe'),
     (5, 'lækkert');
 
--- Create Recipe Rating Table
+
+-- Create Recipe Rating Table with a new primary key constraint
 CREATE TABLE public.opskriftrating (
+    id SERIAL PRIMARY KEY,
     oid INTEGER REFERENCES opskrift(oid),
-    stjerner INTEGER REFERENCES ratingtype(stjerner),
-    PRIMARY KEY (oid, stjerner)
+    stjerner INTEGER REFERENCES ratingtype(stjerner)
 );
 
 INSERT INTO public.opskriftrating (oid, stjerner) VALUES (2, 5);

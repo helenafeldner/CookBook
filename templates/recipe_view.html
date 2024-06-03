@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe[0] }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <h1>{{ recipe[0] }}</h1>
+        <div>
+            <h5>Ingredients:</h5>
+            <ul class="list-unstyled">
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient[1] }} {{ ingredient[0] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h5>Comment:</h5>
+            <p>{{ recipe[1] }}</p>
+        </div>
+        <div>
+            <h5>Rating:</h5>
+            <p>{{ avg_rating|int }}</p>
+        </div>
+
+        {% if current_user.is_authenticated %}
+        <div>
+            <h5>Rate this Recipe:</h5>
+            <form action="{{ url_for('recipe_view', oid=oid) }}" method="post">
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <select class="form-control" id="rating" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
