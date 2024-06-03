@@ -9,6 +9,7 @@ from flask_login import current_user
 # Get the directory of the Flask app
 app_dir = os.path.dirname(os.path.abspath(__file__))
 config_file_path = os.path.join(app_dir, 'config.ini')
+# config_file_path = os.path.join(app_dir, 'config2.ini')
 
 # Read the configuration file
 config = configparser.ConfigParser()
