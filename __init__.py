@@ -8,8 +8,8 @@ from flask_login import current_user
 
 # Get the directory of the Flask app
 app_dir = os.path.dirname(os.path.abspath(__file__))
-config_file_path = os.path.join(app_dir, 'config.ini')
-# config_file_path = os.path.join(app_dir, 'config2.ini')
+# config_file_path = os.path.join(app_dir, 'config.ini')
+config_file_path = os.path.join(app_dir, 'config2.ini')
 
 # Read the configuration file
 config = configparser.ConfigParser()
@@ -285,9 +285,9 @@ def search():
 
     # Build the dynamic query
     columns_query = '''
-    SELECT column_name
-    FROM information_schema.columns
-    WHERE table_name = 'trains'
+    Select O.titel
+    from opskrift O
+    where o.titel = 'Havregrød'
     '''
     cursor.execute(columns_query)
     columns = [column[0] for column in cursor.fetchall()]
@@ -295,8 +295,8 @@ def search():
     # drop the id column
     columns.pop(0)
 
-    search_condition = ' OR '.join(f"{column} ILIKE '%{query}%'" for column in columns)
-    dynamic_query = f"SELECT * FROM trains WHERE {search_condition}"
+    search_condition = ' OR '.join(f"'{column}' ILIKE '%{query}%'" for column in columns)
+    dynamic_query = f"SELECT * FROM opskrift WHERE {search_condition}"
 
     # Execute the dynamic query
     cursor.execute(dynamic_query)
