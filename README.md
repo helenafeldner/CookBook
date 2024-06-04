@@ -61,7 +61,7 @@ RATE A RECIPE: To rate a recipe, you navigate to your chosen recipe, choose a ra
 Happy cooking and rating! 
    
  ### ER-Diagram for the database:
-![er_diagram](https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/1181f28f-42c3-44f4-ad0f-9effcd5fe962)
+![er_diagram](https://github.com/helenafeldner/CookBook/blob/main/images/DIS_ER_diagram1.png)
  
  ### Images
 <img width="1440" alt="home_page" src="https://github.com/helenafeldner/CookBook/blob/main/images/First_page.png">
