@@ -26,6 +26,8 @@ INSERT INTO public.opskrift (oid, titel, comment) VALUES
     (1, 'risengrød', 'Mad man spiser til jul.'),
     (2, 'rødgrød', 'Mad man spiser til sommer.'),
     (3, 'flæskesteg', 'Mad man spiser til jul.');
+    (4, 'svamperisotto', 'Svampe = klammo, men risotto er lækkert.')
+    (5, 'spejlæg', 'Ren gourmetglæde.')
 
 -- Create Ingredients Table
 CREATE TABLE public.ingredienser (
