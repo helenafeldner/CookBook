@@ -297,7 +297,7 @@ def search():
 
     search_condition = ' OR '.join(f"'{column}' ILIKE '%{query}%'" for column in columns)
     # dynamic_query = f"SELECT * FROM opskrift WHERE {search_condition}"
-    dynamic_query = f"SELECT * FROM opskrift O WHERE O.titel ILIKE '{query}'"
+    dynamic_query = f"SELECT * FROM opskrift O WHERE O.titel ~* '{query}'"
     print(dynamic_query)
 
     # Execute the dynamic query
