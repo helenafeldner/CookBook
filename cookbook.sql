@@ -25,9 +25,9 @@ CREATE TABLE public.opskrift (
 INSERT INTO public.opskrift (oid, titel, comment) VALUES
     (1, 'risengrød', 'Mad man spiser til jul.'),
     (2, 'rødgrød', 'Mad man spiser til sommer.'),
-    (3, 'flæskesteg', 'Mad man spiser til jul.');
-    (4, 'svamperisotto', 'Svampe = klammo, men risotto er lækkert.')
-    (5, 'spejlæg', 'Ren gourmetglæde.')
+    (3, 'flæskesteg', 'Mad man spiser til jul.'),
+    (4, 'svamperisotto', 'Svampe = klammo, men risotto er lækkert.'),
+    (5, 'spejlæg', 'Ren gourmetglæde.');
 
 -- Create Ingredients Table
 CREATE TABLE public.ingredienser (
@@ -36,8 +36,6 @@ CREATE TABLE public.ingredienser (
 
 INSERT INTO public.ingredienser (name) VALUES ('gulerod'), ('tomat'), ('svin');
 
--- Drop the old primary key constraint on the opskriftrating table
-ALTER TABLE public.opskriftrating DROP CONSTRAINT IF EXISTS opskriftrating_pkey;
 
 -- Create Rating Type Table
 CREATE TABLE public.ratingtype (
@@ -61,6 +59,10 @@ CREATE TABLE public.opskriftrating (
 );
 
 INSERT INTO public.opskriftrating (oid, stjerner) VALUES (2, 5);
+
+-- Drop the old primary key constraint on the opskriftrating table
+ALTER TABLE public.opskriftrating DROP CONSTRAINT IF EXISTS opskriftrating_pkey;
+
 
 -- Create Recipe Ingredients Table
 CREATE TABLE public.opskriftingrediens (
