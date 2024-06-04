@@ -274,6 +274,40 @@ def index():
     return render_template('index.html', recipes=results, headers=headers, user_logged_in=user_logged_in)
 
 
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+
+    # Perform search in the database based on the query
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    # Define the search query
+
+    # Build the dynamic query
+    columns_query = '''
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_name = 'trains'
+    '''
+    cursor.execute(columns_query)
+    columns = [column[0] for column in cursor.fetchall()]
+
+    # drop the id column
+    columns.pop(0)
+
+    search_condition = ' OR '.join(f"{column} ILIKE '%{query}%'" for column in columns)
+    dynamic_query = f"SELECT * FROM trains WHERE {search_condition}"
+
+    # Execute the dynamic query
+    cursor.execute(dynamic_query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    # get the header
+    headers = [desc[0] for desc in cursor.description]
+
+    return render_template('search.html', results=results, headers=headers, column_with_image_index=10, column_with_train_name_index=1)
 
 
 if __name__ == '__main__':
