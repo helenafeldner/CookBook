@@ -171,7 +171,7 @@ def add_recipe():
                     cursor.execute("INSERT INTO ingredienser (name) VALUES (%s)", (ingredient,))
                 # Insert the ingredient into the opskriftingrediens table
                 cursor.execute(
-                    "INSERT INTO opskriftingredienser (oid, name, mængde) VALUES (%s, %s, %s)",
+                    "INSERT INTO opskriftingrediens (oid, name, mængde) VALUES (%s, %s, %s)",
                     (oid, ingredient.strip(), quantity.strip())  # Remove leading/trailing whitespace
                 )
 
