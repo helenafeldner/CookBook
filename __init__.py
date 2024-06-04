@@ -285,9 +285,9 @@ def search():
 
     # Build the dynamic query
     columns_query = '''
-    Select O.titel
-    from opskrift O
-    where o.titel = 'Havregrød'
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_name = 'opskrift'
     '''
     cursor.execute(columns_query)
     columns = [column[0] for column in cursor.fetchall()]
@@ -296,7 +296,9 @@ def search():
     columns.pop(0)
 
     search_condition = ' OR '.join(f"'{column}' ILIKE '%{query}%'" for column in columns)
-    dynamic_query = f"SELECT * FROM opskrift WHERE {search_condition}"
+    # dynamic_query = f"SELECT * FROM opskrift WHERE {search_condition}"
+    dynamic_query = f"SELECT * FROM opskrift O WHERE O.titel ILIKE '{query}'"
+    print(dynamic_query)
 
     # Execute the dynamic query
     cursor.execute(dynamic_query)
@@ -307,7 +309,7 @@ def search():
     # get the header
     headers = [desc[0] for desc in cursor.description]
 
-    return render_template('search.html', results=results, headers=headers, column_with_image_index=10, column_with_train_name_index=1)
+    return render_template('search.html', results=results, headers=headers, column_with_image_index=10, column_with_recipe_name_index=1)
 
 
 if __name__ == '__main__':

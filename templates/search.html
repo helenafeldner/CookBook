@@ -27,7 +27,7 @@
                             {% if loop.index0 == column_with_image_index %} {# Specify the column index where the image URLs are stored, starting from 0 #}
                                 <td><img src="static/lowres_images/{{ column }}" alt="Image" width="200" onerror="replaceImage(this)"></td>
                             {% elif loop.index0 == column_with_train_name_index %} {# Specify the column index where the train names are stored, starting from 0 #}
-                                <td><a href="{{ url_for('train_view', name=column) }}">{{ column }}</a></td>
+                                <td><a href="{{ url_for('recipe_view', name=column) }}">{{ column }}</a></td>
                             {% else %}
                                 <td>{{ column }}</td>
                             {% endif %}
