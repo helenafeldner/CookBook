@@ -1,4 +1,4 @@
-## MyTrainList Flask Web Application
+## CookBook Flask Web Application
 
 This is a Flask web application that requires an SQL database and a configuration file. The application is hosted locally.
 
