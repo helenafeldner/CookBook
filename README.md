@@ -64,9 +64,12 @@ Happy cooking and rating!
 ![er_diagram](https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/1181f28f-42c3-44f4-ad0f-9effcd5fe962)
  
  ### Images
-<img width="1440" alt="home_page" src="https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/3b97795e-f36c-47ce-be7b-45df5fb2c4ef">
-<img width="1440" alt="train_info" src="https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/6cbac82e-a844-4ac6-9aff-e839e3029131">
-<img width="1440" alt="train_review" src="https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/8e97af7d-6fdf-44cc-94e8-af472ffad859">
-<img width="1440" alt="list_example" src="https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/cd3047ca-8e7f-4834-a84c-0c94a1838599">
+<img width="1440" alt="home_page" src="https://github.com/helenafeldner/CookBook/blob/main/images/First_page.png">
+<img width="1440" alt="Sign up" src="https://github.com/helenafeldner/CookBook/blob/main/images/Sign_up.png">
+<img width="1440" alt="log in" src="https://github.com/helenafeldner/CookBook/blob/main/images/Log_in.png">
+<img width="1440" alt="new front page" src="https://github.com/helenafeldner/CookBook/blob/main/images/Front_pages.png">
+<img width="1440" alt="add recipe" src="https://github.com/helenafeldner/CookBook/blob/main/images/Add_recipe.png">
+<img width="1440" alt="view recipes" src="https://github.com/helenafeldner/CookBook/blob/main/images/All_recipes.png">
+<img width="1440" alt="search result" src="https://github.com/helenafeldner/CookBook/blob/main/images/Search_results.png">
 
 
