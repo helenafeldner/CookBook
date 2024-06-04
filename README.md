@@ -1,50 +1,64 @@
 ## MyTrainList Flask Web Application
 
-This is a Flask web application that requires an SQL database and a configuration file.
+This is a Flask web application that requires an SQL database and a configuration file. The application is hosted locally.
 
 ### Setup Instructions
-   If you have Docker-Compose installed, initializing this webserver is a two-liner. Navigate to the root folder of this repository, and run:
+1. Create a virtual environment ("venv"). The process of doing this depends on your OS.
+   Activate the newly created venv.
+   Next, we must install the necessary dependencies. Navigate to the root folder of this app (where the file 'requirements.txt' is placed), and run the command (Linux):
    ```
-   sudo docker compose build
-   ```
-   ```
-   sudo docker-compose up -d
-   ```
-   You can check the logs for the port at which the server is running by executing:
-   ```
-   sudo docker logs my_train_list-web-1
-   ```
-   If you dont have Docker-Compose, please follow the following instructions.
-
-
-1. Install Flask and other dependencies: Make sure you have the dependencies installed in your Python environment. You can install it using `pip` by running:
-   ```
-   pip install Flask
-   ```
-   ```
-   pip install flask-login
-   ```
-   ```
-   pip install psycopg2
+   pip install -r requirements.txt
    ```
 
-2. Set up your SQL database: Before starting the Flask app, you need to import the `/services/web/train_list.sql` file into your SQL server. The specific steps depend on the database management system (DBMS) you're using. For example, if you're using PostgreSQL you can use the `psql` command-line tool to import the SQL file:
+2. Set up your SQL database: Before starting the Flask app, you need to import the `/cookbook.sql` file into your SQL server. The specific steps depend on the database management system (DBMS) you're using. For example, if you're using PostgreSQL you can use the `psql` command-line tool to import the SQL file:
    ```
-   pysql -U <username> <database_name> < <path_to_train_list.sql>
+   pysql -U <username> CookBook < <path_to_cookbook.sql>
    ```
-   Replace `<username>` with your PostgreSQL username, `<database_name>` with the name of your database, and `train_list.sql` with the appropriate path to the SQL file.
+   Replace `<username>` with your PostgreSQL username, and `cookook.sql` with the appropriate path to the SQL file.
 
-3. Edit the configuration file `config.ini` in the `/services/web/project` folder and provide the necessary SQL database information in it. Here you may need to change the `host` variable to `localhost` instead of `db`.
+3. Edit the configuration file `config.ini` in the root folder, and provide the necessary SQL database information in it. `host` should be `localhost`, `port` should be `5432`, and `database` preferably `cookbook`. The rest depends un the user.
   
-4. Run the Flask app: To start your Flask app, run the `__init__.py` file in the `/services/web/project/` folder:
+4. Run the Flask app: To start your Flask app, head to terminal, navigate to the root file (where the '__init__.py' files is located), and enter the command (Linux):
    ```
-   python /services/web/project/__init__.py
+   flask run
    ```
+   If there is an issue, try entering this:
+
+   ```
+   export FLASK_ENV = development
+
+   flask run
+   ```
+   
    Flask will start a local server, and you can access your web application by visiting the provided URL (usually http://localhost:5000).
 
 ### How to use
 
-The web app works a lot like sites such as IMDB and My Anime List. The site can be navigated using the bar in the top of the page. Hovering the mouse above a train, will give a show the trains average rating. Clicking on train will take the user to the trains page where additional information is presented. Here, a user can leave a review and rating for the train provided they are signed in. A user can sign up by providing a user name, email and password. Users can also add trains to their own list. A user can only have one list.
+LANDING PAGE ('index'): When you run our web-app, you will see a page with a pink bar and a cookbook logo - that is all.
+
+SIGN UP: You sign up by clicking the 'Sign Up' button in the top right corner. This will take you to a page where you can enter name, email (e.g. name@mail.dk), and password.
+
+LOGIN: When you have signed up, you login by clicking 'Login' in the top right corner. This takes you to a page where you can enter your login data. Once yoy're logged in, you will have 2 new blue buttons, 'Add New Recipe', and 'View Recipes'.
+
+ADD NEW RECIPE: Here you can add a new recipe by entering a name, comment, ingredients, and amount (integer) of each ingredient. Note: If you want to add 1 oats and 2 milk, the lines in the ingredients and amount have to match e.g.:
+Ingredient:
+```
+oats
+milk
+```
+Amount:
+```
+1
+2
+```
+
+VIEW RECIPES: Here you can see the recipes in your database (the five we have created, and the ones you might have added).
+
+SEARCH FOR RECIPES: You can find a recipe in your database by typing its name or parts of the name (this works with ##regular## expression matching). As an example, try typing 'rød', and you will see the recipe for 'rødgrød' and 'risengrød'.
+
+RATE A RECIPE: To rate a recipe, you navigate to your chosen recipe, choose a rating of 1-5 (worst to best), and press 'Submit'.
+
+Happy cooking and rating! 
    
  ### ER-Diagram for the database:
 ![er_diagram](https://github.com/mikkel-kjaerulf/my_train_list/assets/114149729/1181f28f-42c3-44f4-ad0f-9effcd5fe962)
